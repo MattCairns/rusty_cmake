@@ -2,17 +2,10 @@ cmake_minimum_required(VERSION 3.23)
 
 project(rusty_cmake CXX)
 
-include(FetchContent)
-
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
 set(CMAKE_CXX_STANDARD 17)
 
-FetchContent_Declare(
-    Corrosion
-    GIT_REPOSITORY https://github.com/corrosion-rs/corrosion.git
-    GIT_TAG master
-)
-FetchContent_MakeAvailable(Corrosion)
+find_package(Corrosion REQUIRED)
 
 find_program(CXXBRIDGE cxxbridge PATHS "$ENV{HOME}/.cargo/bin/")
 if (CXXBRIDGE STREQUAL "CXXBRIDGE-NOTFOUND")
